@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Produits</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Liste des produits</div>
+			<div class="panel-body">
+				<form th:action="@{/index}" method="get">
+					<label>Mot Clé:</label> <input type="text" name="motCle"
+						th:value="${motCle}">
+					<button type="submit" class="btn btn-primary">Chercher</button>
+				</form>
+			</div>
+			<div class="panel-body">
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<th>Désignation</th>
+						<th>PRIX</th>
+						<th>QTE</th>
+					</tr>
+					<tr th:each="p:${listProduits}">
+						<td th:text="${p.id}"></td>
+						<td th:text="${p.designation}"></td>
+						<td th:text="${p.prix}"></td>
+						<td th:text="${p.quantite}"></td>
+						<td><a class="btn btn-danger" onclick="return confirm('Etes vous sures de vouloir supprimer?')" 
+						th:href="@{/delete(id=${p.id}, page=${currentPage}, motCle=${motCle})}">Delete</a></td>
+					</tr>
+				</table>
+				<ul class="nav nav-pills">
+					<li th:class="${currentPage==status.index}?'active':''"
+						th:each="page, status:${pages}"><a
+						th:href="@{/index(page = ${status.index}, motCle=${motCle})}"
+						th:text="${status.index}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
