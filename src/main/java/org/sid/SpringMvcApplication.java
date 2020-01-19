@@ -19,10 +19,10 @@ public class SpringMvcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		produitRepository.save(new Produit(null, "Stelo", 20.00, 5));
-		produitRepository.save(new Produit(null, "PC DELL", 20000.00, 5));
-		produitRepository.save(new Produit(null, "Clavier", 2000.00, 5));
-		produitRepository.save(new Produit(null, "Souris", 200.00, 5));
+//		produitRepository.save(new Produit(null, "Stelo", 20.00, 5));
+//		produitRepository.save(new Produit(null, "PC DELL", 20000.00, 5));
+//		produitRepository.save(new Produit(null, "Clavier", 2000.00, 5));
+//		produitRepository.save(new Produit(null, "Souris", 200.00, 5));
 		
 		produitRepository.findAll().forEach(p -> {
 			System.out.println(p.getDesignation());
